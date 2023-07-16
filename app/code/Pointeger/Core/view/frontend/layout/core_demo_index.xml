@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="main">
+            <block name="core.demo.index"
+                   template="Pointeger_Core::core/demo.phtml">
+                <arguments>
+                    <argument name="viewModel" xsi:type="object">Pointeger\Core\ViewModel\CheckCustomer</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
