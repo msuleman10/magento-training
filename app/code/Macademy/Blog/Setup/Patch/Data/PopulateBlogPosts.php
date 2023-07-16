@@ -32,8 +32,8 @@ class PopulateBlogPosts implements DataPatchInterface
 
         $post = $this->postFactory->create();
         $post->setData([
-            'title' => 'Today is sunnny',
-            'content' => 'Today is vary hot'
+            'title' => 'hello ',
+            'content' => 'done'
         ]);
         $this->postRepository->save($post);
 

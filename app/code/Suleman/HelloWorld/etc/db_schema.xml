@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="my_cars" resource="default" engine="innodb" comment="Post Table">
+        <column xsi:type="int" name="car_id" unsigned="true" nullable="false" identity="true" comment="Car Id"/>
+        <column xsi:type="varchar" name="manufacturer" nullable="false" length="255" comment="Car Manufacturer"/>
+        <column xsi:type="mediumtext" name="model" nullable="true" comment="Car Model"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created_At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="car_id"/>
+        </constraint>
+    </table>
+</schema>

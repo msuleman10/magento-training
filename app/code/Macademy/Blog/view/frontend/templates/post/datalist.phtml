@@ -1,0 +1,24 @@
+<?php
+/**
+ * @var Macademy\Blog\Block\PostData $block ;
+ */
+
+$collectionItems = $block->getCollectionItems();
+$collectionItems->removeItemByKey(3);
+
+?>
+<div>
+    <ul>
+        <?php foreach ($collectionItems ?? [] as $item): ?>
+        <?php
+        if ((int)$item->getData('id') === 2){
+            $item->setData('title', 'hello word')->save();
+        }else{ ?>
+            <li>id <?= $item->getData('id')?></li>
+            <li>title  <?= $item->getTitle()?></li>
+            <li>content  <?= $item->getContent()?></li>
+            <li>create <?= $item->getCreatedAt()?></li>
+        <?php } ?>
+        <?php endforeach; ?>
+    </ul>
+</div>
