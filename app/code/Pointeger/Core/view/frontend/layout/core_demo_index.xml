@@ -7,5 +7,6 @@
             <block class="Pointeger\Core\Block\CheckCustomer" name="core.demo.index"
                    template="Pointeger_Core::core/demo.phtml"/>
         </referenceContainer>
+        <referenceContainer name="footer-container" display="false"/>
     </body>
 </page>
