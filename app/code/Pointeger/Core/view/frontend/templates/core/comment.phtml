@@ -1,0 +1,27 @@
+<?php
+/**
+ * @var Pointeger\Core\Block\CustomerCommentData $block ;
+ */
+?>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>Entity_id</th>
+            <th>Customer_id</th>
+            <th>Name</th>
+            <th>Comment</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($block->getCollectionItems() as $comment): ?>
+            <tr>
+                <td><?= $comment->getEntityId() ?></td>
+                <td><?= $comment->getCustomerId() ?></td>
+                <td><?= $comment->getName() ?></td>
+                <td><?= $comment->getComment() ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
