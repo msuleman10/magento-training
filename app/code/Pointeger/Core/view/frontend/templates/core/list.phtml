@@ -19,6 +19,7 @@ $items = $commentCollection->getItems();
                 <th>Entity Id</th>
                 <th>Name</th>
                 <th>Comment</th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -27,6 +28,7 @@ $items = $commentCollection->getItems();
                     <td><?= $comment->getEntityId(); ?></td>
                     <td><?= $comment->getName(); ?></td>
                     <td><?= $comment->getComment(); ?></td>
+                    <td><a href="<?= $block->getUrl("core/comment/delete",['id'=>$comment->getEntityId()] ) ?>">Delete</a></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
