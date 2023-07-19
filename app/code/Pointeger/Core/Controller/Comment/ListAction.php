@@ -1,37 +1,49 @@
 <?php
-declare(strict_types=1);
 
 namespace Pointeger\Core\Controller\Comment;
 
-use Magento\Framework\App\Action\HttpGetActionInterface;
-use Magento\Framework\Controller\Result\RedirectFactory;
+use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
+use Magento\Framework\App\RequestInterface;
+use Magento\Sales\Controller\OrderInterface;
+use Magento\Framework\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Customer\Model\SessionFactory;
 
-class ListAction implements HttpGetActionInterface
+class ListAction extends \Magento\Framework\App\Action\Action implements OrderInterface, HttpGetActionInterface
 {
     /**
-     * @param PageFactory $pageFactory
-     * @param SessionFactory $sessionFactory
-     * @param RedirectFactory $redirectFactory
+     * @var PageFactory
      */
-    public function __construct
-    (
-        private PageFactory     $pageFactory,
-        private SessionFactory  $sessionFactory,
-        private RedirectFactory $redirectFactory
+    protected $resultPageFactory;
+
+    /**
+     * @param Context $context
+     * @param PageFactory $resultPageFactory
+     */
+    public function __construct(
+        private SessionFactory $sessionFactory,
+        Context                $context,
+        PageFactory            $resultPageFactory
     )
     {
+        $this->resultPageFactory = $resultPageFactory;
+        parent::__construct($context);
     }
 
     public function execute()
     {
-        $customerSession = $this->sessionFactory->create();
-        if ($customerSession->isLoggedIn()) {
-            return $this->pageFactory->create();
-        } else {
-            $redirect = $this->redirectFactory->create();
-            return $redirect->setPath("customer/account/login");
+        $resultPage = $this->resultPageFactory->create();
+        return $resultPage;
+    }
+
+    public function dispatch(RequestInterface $request)
+    {
+        $sessionData = $this->sessionFactory->create();
+        $loginUrl = $this->_objectManager->get(\Magento\Customer\Model\Url::class)->getLoginUrl();
+
+        if (!$sessionData->authenticate($loginUrl)) {
+            $this->_actionFlag->set('', self::FLAG_NO_DISPATCH, true);
         }
+        return parent::dispatch($request);
     }
 }

@@ -2,26 +2,35 @@
 /**
  * @var Pointeger\Core\Block\CommentList $block ;
  */
+
+$commentCollection = $block->getCustomerComment();
+$size = $commentCollection->getSize();
+$items = $commentCollection->getItems();
 ?>
 
 <div>
-    <table border="2px">
-        <thead>
-        <tr>
-            <th>Entity Id</th>
-            <th>Name</th>
-            <th>Comment</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($block->getCustomerComment() as $comment): ?>
+    <?php if (!$size) { ?>
+        <h3>Opps You Have No Comments <i><u><a href="<?= $block->getUrl("core/comment/form") ?>">Add New
+                        Comments</a></u></i></h3>
+    <?php } else { ?>
+        <table border="2px">
+            <thead>
             <tr>
-                <td><?= $comment->getEntityId(); ?></td>
-                <td><?= $comment->getName(); ?></td>
-                <td><?= $comment->getComment(); ?></td>
+                <th>Entity Id</th>
+                <th>Name</th>
+                <th>Comment</th>
             </tr>
-        <?php endforeach; ?>
-        </tbody>
+            </thead>
+            <tbody>
+            <?php foreach ($items as $comment): ?>
+                <tr>
+                    <td><?= $comment->getEntityId(); ?></td>
+                    <td><?= $comment->getName(); ?></td>
+                    <td><?= $comment->getComment(); ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php } ?>
 
-    </table>
 </div>

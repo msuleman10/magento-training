@@ -24,14 +24,15 @@ class CommentList extends Template
     {
         parent::__construct($context, $data);
     }
+
     /**
-     * @return \Magento\Framework\DataObject[]
+     * @return \Pointeger\Core\Model\ResourceModel\Comment\Collection
      */
     public function getCustomerComment()
     {
         $commentCollection = $this->collectionFactory->create();
-        $data = $commentCollection->addFieldToFilter("customer_id", $this->getCustomerId())->getItems();
-        return $data;
+        $commentCollection->addFieldToFilter("customer_id", $this->getCustomerId());
+        return $commentCollection;
     }
 
     /**
