@@ -8,12 +8,12 @@ $size = $commentCollection->getSize();
 $items = $commentCollection->getItems();
 ?>
 
-<div>
+<div class="table-container">
     <?php if (!$size) { ?>
         <h3>Opps You Have No Comments <i><u><a href="<?= $block->getUrl("core/comment/form") ?>">Add New
                         Comments</a></u></i></h3>
     <?php } else { ?>
-        <table border="2px">
+        <table border="2px" class="table">
             <thead>
             <tr>
                 <th>Entity Id</th>
@@ -24,11 +24,13 @@ $items = $commentCollection->getItems();
             </thead>
             <tbody>
             <?php foreach ($items as $comment): ?>
-                <tr>
+                <tr class="customer-data<?= $comment->getEntityId() ?> " id="hello">
                     <td><?= $comment->getEntityId(); ?></td>
                     <td><?= $comment->getName(); ?></td>
                     <td><?= $comment->getComment(); ?></td>
-                    <td><a href="<?= $block->getUrl("core/comment/delete",['id'=>$comment->getEntityId()] ) ?>">Delete</a></td>
+                    <td>
+                        <button data-name="test" data-id="<?= $comment->getEntityId() ?>" class="button">Delete</button>
+                    </td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
@@ -36,3 +38,26 @@ $items = $commentCollection->getItems();
     <?php } ?>
 
 </div>
+<script>
+    require(["jquery", "mage/url"], function ($, url) {
+        $(".button").click(function (e) {
+            $.ajax({
+                url: "<?= $block->getUrl("core/comment/ajaxdelete")?>",
+                type: "POST",
+                data: {id: e.target.dataset.id},
+                error: function (error) {
+                    console.log(error)
+                },
+                success: function () {
+                    let getFormUrl = url.build("core/comment/form");
+                    $(".customer-data" + e.target.dataset.id).remove();
+                    if (!$("#hello").length) {
+                        $(".table").remove();
+                        $(".table-container").html(`<h3>Opps you have no comments <i><u><a href="${getFormUrl}">add new
+                        comments here</a></u></i></h3>`);
+                    }
+                }
+            })
+        })
+    });
+</script>
