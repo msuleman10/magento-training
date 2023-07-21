@@ -1,9 +1,9 @@
-<?php declare(strict_types=1);
+<?php
 
 use Magento\Framework\Component\ComponentRegistrar;
 
 ComponentRegistrar::register(
     ComponentRegistrar::MODULE,
-    'Suleman_HelloWorld',
+    'Macademy_BlogExtra',
     __DIR__
 );
