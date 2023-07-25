@@ -1,0 +1,11 @@
+<?php
+/**
+ * @var $block Magento\Framework\View\Element\Template
+ */
+$storeHoursViewTemplate = $block->getData("store-hours")
+?>
+
+<span class="store-hours">
+    <?= __('Store Hours: %1', $storeHoursViewTemplate->getStoreHours()) ?>
+</span>
+<br/>

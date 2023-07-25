@@ -12,9 +12,9 @@
         <referenceBlock name="report.bugs" display="false"/>
         <referenceContainer name="footer">
             <container name="phone-number-box" htmlTag="div" htmlId="phoneNumberContainer" before="copyright">
-                <block name="phone-number" template="Juno_Theme::phone-number.phtml" ifconfig="general/store_information/phone">
+                <block name="phone.number" template="Juno_Theme::phone-number.phtml" ifconfig="general/store_information/phone">
                     <arguments>
-                        <argument name="phone-number" xsi:type="object">Juno\Theme\ViewModel\PhoneNumber</argument>
+                        <argument name="phone-number" xsi:type="object">Juno\Theme\ViewModel\PhoneNumberAndStoreHours</argument>
                     </arguments>
                 </block>
             </container>
