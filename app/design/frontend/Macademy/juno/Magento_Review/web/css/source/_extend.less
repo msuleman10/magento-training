@@ -1,0 +1,13 @@
+& when (@media-common = true) {
+    .data.switch .counter {
+        .lib-css(color, @text__color__muted);
+
+        &:before {
+            content: '[';
+        }
+
+        &:after {
+            content: ']';
+        }
+    }
+}
