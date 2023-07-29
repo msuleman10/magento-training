@@ -30,6 +30,6 @@ class Index extends Action
             'age' => '19',
         ];
 
-      return  $this->data->sendEmail($email, $rseverName, $emailTemplateId, $templateVars);
+        $this->data->sendEmail($email, $rseverName, $emailTemplateId, $templateVars);
     }
 }
