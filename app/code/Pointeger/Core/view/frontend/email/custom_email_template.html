@@ -1,0 +1,22 @@
+<!--@subject Custom email after order place  @-->
+{{template config_path="design/email/header_template"}}
+<div class="email-template">
+    <h1>Welcome to Our Store!</h1>
+    <p>Hello {{var customer_name}},</p>
+    <table border="2">
+        <tr>
+            <th>Item Name</th>
+            <th>Qty</th>
+            <th>Price</th>
+        </tr>
+        {{for item in items}}
+        <tr>
+            <td>{{var item.name}}</td>
+            <td>{{var item.qty}}</td>
+            <td>{{var item.price}}</td>
+        </tr>
+        {{/for}}
+    </table>
+    <p>Order Total: {{var order_total}}</p>
+</div>
+{{template config_path="design/email/footer_template"}}
