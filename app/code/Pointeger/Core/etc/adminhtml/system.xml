@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="pointeger" translate="label" sortOrder="1">
+            <label>Pointeger</label>
+        </tab>
+        <section id="helloworld" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Hello World</label>
+            <tab>pointeger</tab>
+            <resource>Pointeger_Core::helloworld</resource>
+            <group id="generalconfiguration" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="0" showInStore="0">
+                <label>General Configuration</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>Module Enable/disable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="text_test" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>Display Text</label>
+                    <depends>
+                        <field id="*/*/enable">1</field>
+                    </depends>
+                </field>
+                <field id="textarea" translate="label" type="textarea" sortOrder="1" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>textarea</label>
+                    <depends>
+                        <field id="*/*/enable">1</field>
+                    </depends>
+                </field>
+                <field id="obscure" translate="label" type="obscure" sortOrder="1" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>obscure</label>
+                    <depends>
+                        <field id="*/*/enable">1</field>
+                    </depends>
+                </field>
+                <field id="password" translate="label" type="password" sortOrder="1" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>password</label>
+                    <validate>required-entry no-whitespace</validate>
+                    <depends>
+                        <field id="*/*/enable">1</field>
+                    </depends>
+                </field>
+                <field id="file" translate="label" type="file" sortOrder="1" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>file</label>
+                    <depends>
+                        <field id="*/*/enable">1</field>
+                    </depends>
+                </field>
+                <field id="time" translate="label" type="time" sortOrder="1" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>time</label>
+                    <depends>
+                        <field id="*/*/enable">1</field>
+                    </depends>
+                </field>
+                <field id="allowspecific" translate="label" type="multiselect" sortOrder="1" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>allowspecific</label>
+                    <source_model>Pointeger\Core\Model\Config\Source\Countries</source_model>
+                </field>
+                <field id="image" translate="label" type="image" sortOrder="1" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>image</label>
+                    <depends>
+                        <field id="*/*/enable">1</field>
+                    </depends>
+                </field>
+                <field id="theme_color" translate="label" sortOrder="8" type="text" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>Theme Color</label>
+                    <validate>required-entry</validate>
+                    <frontend_model>Pointeger\Core\Block\Color</frontend_model>
+                </field>
+            </group>
+        </section>
+        <section id="catalog" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <class>separator-top</class>
+            <label>Catalog</label>
+            <tab>catalog</tab>
+            <resource>Magento_Catalog::config_catalog</resource>
+            <group id="newgroup" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
+                <label>Pointeger Core</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>Module Enable/disable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="text" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>Display Text</label>
+                    <comment>This text will display on the frontend.</comment>
+                </field>
+                <field id="textarea" translate="label" type="textarea" sortOrder="1" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>textarea</label>
+                    <comment>This text will display on the frontend.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

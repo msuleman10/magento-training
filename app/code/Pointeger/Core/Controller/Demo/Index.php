@@ -1,26 +1,33 @@
 <?php
-declare(strict_types=1);
 
 namespace Pointeger\Core\Controller\Demo;
 
-use Magento\Framework\App\Action\HttpGetActionInterface;
-use Magento\Framework\View\Result\PageFactory;
+use Magento\Framework\App\Action\Context;
+use Pointeger\Core\Helper\Data;
 
-class Index implements HttpGetActionInterface
+class Index extends \Magento\Framework\App\Action\Action
 {
     /**
-     * @param PageFactory $pageFactory
+     * @param Context $context
+     * @param Data $data
      */
     public function __construct
     (
-        private PageFactory $pageFactory
-    ) {}
+        Context      $context,
+        private Data $data
+    )
+    {
+        parent::__construct($context);
+    }
 
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
+     * @return void
      */
     public function execute()
     {
-        return $this->pageFactory->create();
+        echo $this->data->getGeneralConfig('enable');
+        echo $this->data->getGeneralConfig('text_test');
+        echo $this->data->getGeneralConfig('textarea');
+        exit();
     }
 }
