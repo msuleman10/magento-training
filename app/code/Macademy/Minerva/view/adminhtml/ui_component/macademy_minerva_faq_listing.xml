@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">macademy_minerva_faq_listing.macademy_minerva_faq_listing_data_source</item>
+            <item name="provider" xsi:type="string">
+                macademy_minerva_faq_listing.macademy_minerva_faq_listing_data_source
+            </item>
         </item>
     </argument>
     <settings>
@@ -14,10 +17,11 @@
     </settings>
     <dataSource name="macademy_minerva_faq_listing_data_source" component="Magento_Ui/js/grid/provider">
         <settings>
-            <updateUrl path="mui/index/render" />
+            <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Macademy_Minerva::faq</aclResource>
-        <dataProvider name="macademy_minerva_faq_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <dataProvider name="macademy_minerva_faq_listing_data_source"
+                      class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>id</primaryFieldName>
@@ -25,6 +29,20 @@
         </dataProvider>
     </dataSource>
     <columns name="macademy_minerva_faq_column">
+        <settings>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">
+                        macademy_minerva_faq_listing.macademy_minerva_faq_listing.macademy_minerva_faq_column.actions
+                    </item>
+                    <item name="target" xsi:type="string">applyAction</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">edit</item>
+                        <item name="1" xsi:type="string">${$.$data.rowIndex}</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
         <column name="id">
             <settings>
                 <label translate="true">ID</label>
