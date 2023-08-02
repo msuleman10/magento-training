@@ -26,9 +26,6 @@ class Index extends Action implements HttpGetActionInterface
         parent::__construct($context);
     }
 
-    /**
-     * @return \Magento\Framework\View\Result\Page
-     */
     public function execute()
     {
         $page = $this->pageFactory->create();
