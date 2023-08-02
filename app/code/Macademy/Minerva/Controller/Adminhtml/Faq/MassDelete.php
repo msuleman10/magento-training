@@ -8,13 +8,22 @@ use Macademy\Minerva\Model\ResourceModel\Faq\CollectionFactory;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpPostActionInterface;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Ui\Component\MassAction\Filter;
 
 class MassDelete extends Action implements HttpPostActionInterface
 {
     const ADMIN_RESOURCE = 'Macademy_Minerva::faq';
 
+    /**
+     * @param Context $context
+     * @param CollectionFactory $collectionFactory
+     * @param Filter $filter
+     */
     public function __construct
     (
         Context                   $context,
@@ -25,6 +34,10 @@ class MassDelete extends Action implements HttpPostActionInterface
         parent::__construct($context);
     }
 
+    /**
+     * @return ResponseInterface|Redirect|(Redirect&ResultInterface)|ResultInterface
+     * @throws LocalizedException
+     */
     public function execute()
     {
         $collection = $this->collectionFactory->create();

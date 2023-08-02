@@ -7,6 +7,9 @@ namespace Macademy\Minerva\Controller\Adminhtml\Faq;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 
 class NewAction extends Action implements HttpGetActionInterface
@@ -27,13 +30,13 @@ class NewAction extends Action implements HttpGetActionInterface
     }
 
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
+     * @return ResponseInterface|ResultInterface|Page
      */
     public function execute()
     {
         $page = $this->pageFactory->create();
         $page->setActiveMenu('Macademy_Minerva::faq');
-        $page->getConfig()->getTitle()->prepend(__('FAQs Save'));
+        $page->getConfig()->getTitle()->prepend(__('New FAQs'));
 
         return $page;
     }

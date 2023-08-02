@@ -11,26 +11,41 @@ use Magento\Framework\Setup\Patch\DataPatchInterface;
 
 class InitialFaqs implements DataPatchInterface
 {
+    /**
+     * @param ModuleDataSetupInterface $moduleDataSetup
+     * @param ResourceConnection $connection
+     */
     public function __construct
     (
         private ModuleDataSetupInterface $moduleDataSetup,
-        private ResourceConnection $connection
-    ){}
+        private ResourceConnection       $connection
+    )
+    {
+    }
 
+    /**
+     * @return array|string[]
+     */
     public static function getDependencies()
     {
         return [];
     }
 
+    /**
+     * @return array|string[]
+     */
     public function getAliases()
     {
         return [];
     }
 
+    /**
+     * @return $this|InitialFaqs
+     */
     public function apply()
     {
-        $conection=$this->connection->getConnection();
-        $data=[
+        $conection = $this->connection->getConnection();
+        $data = [
             [
                 'question' => 'What is your best selling item?',
                 'answer' => 'The item you buy!',
@@ -47,7 +62,7 @@ class InitialFaqs implements DataPatchInterface
                 'is_published' => 0,
             ]
         ];
-        $conection->insertMultiple(Faq::MAIN_TABLE , $data);
+        $conection->insertMultiple(Faq::MAIN_TABLE, $data);
         return $this;
     }
 }

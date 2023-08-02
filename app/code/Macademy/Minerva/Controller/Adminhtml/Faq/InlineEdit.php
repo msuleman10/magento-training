@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace Macademy\Minerva\Controller\Adminhtml\Faq;
 
+use Exception;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpPostActionInterface;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\Result\Json;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Macademy\Minerva\Model\FaqFactory;
 use Macademy\Minerva\Model\ResourceModel\Faq as FaqResource;
+use Magento\Framework\Controller\ResultInterface;
 
 class InlineEdit extends Action implements HttpPostActionInterface
 {
@@ -32,7 +36,7 @@ class InlineEdit extends Action implements HttpPostActionInterface
     }
 
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Json|\Magento\Framework\Controller\ResultInterface
+     * @return ResponseInterface|Json|ResultInterface
      */
     public function execute()
     {
@@ -55,7 +59,7 @@ class InlineEdit extends Action implements HttpPostActionInterface
                     $this->faqResource->load($faq, $id);
                     $faq->setData(array_merge($faq->getData(), $item));
                     $this->faqResource->save($faq);
-                } catch (\Exception $e) {
+                } catch (Exception $e) {
                     $messages[] = __("Something went wrong while saving item $id");
                     $error = true;
                 }

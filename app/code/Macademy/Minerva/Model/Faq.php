@@ -8,8 +8,11 @@ use Magento\Framework\Model\AbstractModel;
 
 class Faq extends AbstractModel
 {
+    /**
+     * @return void
+     */
     protected function _construct()
     {
-        $this->_init(\Macademy\Minerva\Model\ResourceModel\Faq::class);
+        $this->_init(ResourceModel\Faq::class);
     }
 }

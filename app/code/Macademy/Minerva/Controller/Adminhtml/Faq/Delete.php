@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace Macademy\Minerva\Controller\Adminhtml\Faq;
 
+use Exception;
 use Macademy\Minerva\Model\ResourceModel\Faq as FaqResource;
 use Macademy\Minerva\Model\FaqFactory;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Controller\ResultInterface;
 
 class Delete extends Action implements HttpGetActionInterface
 {
@@ -31,7 +35,7 @@ class Delete extends Action implements HttpGetActionInterface
     }
 
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|(\Magento\Framework\Controller\Result\Redirect&\Magento\Framework\Controller\ResultInterface)|\Magento\Framework\Controller\ResultInterface
+     * @return ResponseInterface|Redirect|(Redirect&ResultInterface)|ResultInterface
      */
     public function execute()
     {
@@ -45,7 +49,7 @@ class Delete extends Action implements HttpGetActionInterface
             } else {
                 $this->messageManager->addErrorMessage(__('Recored not deleted'));
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->messageManager->addErrorMessage($e);
         }
         $redirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);

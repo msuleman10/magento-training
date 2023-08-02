@@ -12,7 +12,9 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="macademy_minerva_faq_listing_data_source" xsi:type="string">Macademy\Minerva\Model\ResourceModel\Faq\Grid\Collection</item>
+                <item name="macademy_minerva_faq_listing_data_source" xsi:type="string">
+                    Macademy\Minerva\Model\ResourceModel\Faq\Grid\Collection
+                </item>
             </argument>
         </arguments>
     </type>
