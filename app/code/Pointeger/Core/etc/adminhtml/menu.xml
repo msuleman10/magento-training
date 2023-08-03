@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+            id="Pointeger_Core::core"
+            title="Core"
+            translate="title"
+            module="Pointeger_Core"
+            sortOrder="30"
+            parent="Magento_Backend::content"
+            resource="Pointeger_Core::core"
+        />
+        <add
+            id="Pointeger_Core::comments"
+            title="Comments"
+            translate="title"
+            module="Pointeger_Core"
+            parent="Pointeger_Core::core"
+            resource="Pointeger_Core::comments"
+            action="core/comments"
+        />
+    </menu>
+</config>

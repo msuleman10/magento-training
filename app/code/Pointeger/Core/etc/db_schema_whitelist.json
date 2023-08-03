@@ -1,0 +1,13 @@
+{
+    "customer_comments": {
+        "column": {
+            "entity_id": true,
+            "customer_id": true,
+            "name": true,
+            "comment": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}
