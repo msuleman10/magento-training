@@ -1,62 +1,74 @@
 <?php
 /**
- * @var Pointeger\Core\Block\CommentList $block ;
+ * @var Template $block ;
  */
 
-$commentCollection = $block->getCustomerComment();
-$size = $commentCollection->getSize();
-$items = $commentCollection->getItems();
-?>
+use Magento\Framework\View\Element\Template;
 
-<div class="table-container">
-    <?php if (!$size) { ?>
-        <h3>Opps You Have No Comments <i><u><a href="<?= $block->getUrl("core/comment/form") ?>">Add New
-                        Comments</a></u></i></h3>
-    <?php } else { ?>
-        <table border="2px" class="table">
-            <thead>
-            <tr>
-                <th>Entity Id</th>
-                <th>Name</th>
-                <th>Comment</th>
-                <th>Delete</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php foreach ($items as $comment): ?>
-                <tr class="customer-data<?= $comment->getEntityId() ?> " id="hello">
-                    <td><?= $comment->getEntityId(); ?></td>
-                    <td><?= $comment->getName(); ?></td>
-                    <td><?= $comment->getComment(); ?></td>
-                    <td>
-                        <button data-name="test" data-id="<?= $comment->getEntityId() ?>" class="button">Delete</button>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-            </tbody>
-        </table>
-    <?php } ?>
+?>
+<div id="allComments">
 
 </div>
 <script>
     require(["jquery", "mage/url"], function ($, url) {
-        $(".button").click(function (e) {
-            $.ajax({
-                url: "<?= $block->getUrl("core/comment/ajaxdelete")?>",
-                type: "POST",
-                data: {id: e.target.dataset.id},
-                error: function (error) {
-                    console.log(error)
-                },
-                success: function () {
-                    let getFormUrl = url.build("core/comment/form");
-                    $(".customer-data" + e.target.dataset.id).remove();
-                    if (!$("#hello").length) {
-                        $(".table").remove();
-                        $(".table-container").html(`<h3>Opps you have no comments <i><u><a href="${getFormUrl}">add new
-                        comments here</a></u></i></h3>`);
+        $(document).ready(function () {
+            function loadTable() {
+                $.ajax({
+                    url: "<?= $block->getUrl("core/comment/commentData")?>",
+                    type: "GET",
+                    error: function (error) {
+                        console.log(error)
+                    },
+                    success: function (data) {
+                        let commentData = JSON.parse(data.result);
+                        let getFormUrl = url.build("core/comment/form");
+                        if (commentData.length === 0) {
+                            $("#allComments").html(`<h3>Opps you have no comments <i><u><a href="${getFormUrl}">add new
+                            comments here</a></u></i></h3>`);
+                        } else {
+                            var table = $(` <table border="2px" class="table">
+                                <thead>
+                                <tr>
+                                    <th>Entity Id</th>
+                                    <th>Name</th>
+                                    <th>Comment</th>
+                                    <th>Delete</th>
+                                </tr>
+                                </thead>
+                                <tbody> </tbody>`);
+                            commentData.forEach((comment) => {
+                                var row = $('<tr>').addClass('customer-data').addClass(comment.entity_id);
+                                let trEntiryId = $('<td>').html(comment.entity_id);
+                                let trName = $('<td>').html(comment.name);
+                                let trComment = $('<td>').html(comment.comment);
+                                let trButton = $('<td>').html(`<button data-name="test" data-id="${comment.entity_id}"class="button">Delete </button>`)
+                                row.append(trEntiryId);
+                                row.append(trName);
+                                row.append(trComment);
+                                row.append(trButton);
+                                table.find('tbody').append(row);
+                            })
+
+                            $("#allComments").html(table);
+                        }
                     }
-                }
+                })
+            }
+
+            loadTable()
+
+            $(document).on("click", ".button", function (e) {
+                $.ajax({
+                    url: "<?= $block->getUrl("core/comment/ajaxdelete")?>",
+                    type: "POST",
+                    data: {id: e.target.dataset.id},
+                    error: function (error) {
+                        console.log(error)
+                    },
+                    success: function () {
+                        loadTable()
+                    }
+                })
             })
         })
     });

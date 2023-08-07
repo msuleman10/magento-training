@@ -4,9 +4,13 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <update handle="customer_account"/>
     <body>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="title" xsi:type="string">Comments</argument>
+            </action>
+        </referenceBlock>
         <referenceContainer name="main">
-            <block class="Pointeger\Core\Block\CommentList" name="core.comment.list"
-                   template="Pointeger_Core::core/list.phtml"/>
+            <block name="core.comment.list" template="Pointeger_Core::core/list.phtml"/>
         </referenceContainer>
     </body>
 </page>

@@ -4,6 +4,9 @@ declare(strict_types=1);
 namespace Pointeger\Core\Controller\Demo;
 
 use Magento\Framework\App\Action\HttpGetActionInterface;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 
 class CustomerComment implements HttpGetActionInterface
@@ -19,7 +22,7 @@ class CustomerComment implements HttpGetActionInterface
     }
 
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
+     * @return ResponseInterface|ResultInterface|Page
      */
     public function execute()
     {

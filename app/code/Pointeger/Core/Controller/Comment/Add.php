@@ -44,7 +44,7 @@ class Add extends Action
             $commentModel->setData($data);
             try {
                 $this->resourceModel->save($commentModel);
-                $this->messageManager->addSuccessMessage(__("Comment Added Successfully."));
+                $this->messageManager->addSuccessMessage(__("Pending for approval"));
             } catch (\Exception $exception) {
                 $this->messageManager->addErrorMessage(__("Error saving comment"));
             }

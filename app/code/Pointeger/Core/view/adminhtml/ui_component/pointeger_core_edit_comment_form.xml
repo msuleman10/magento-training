@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                pointeger_core_edit_comment_form.pointeger_core_comment_data_source
+            </item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="Pointeger\Core\Block\Adminhtml\Comment\Edit\Button\Save"/>
+            <button name="back" class="Pointeger\Core\Block\Adminhtml\Comment\Edit\Button\Back"/>
+        </buttons>
+        <namespace>pointeger_core_edit_comment_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>pointeger_core_edit_comment_form.pointeger_core_comment_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="pointeger_core_comment_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="*/*/save"/>
+        </settings>
+        <dataProvider class="Pointeger\Core\Ui\DataProvider\Comment" name="pointeger_core_comment_data_source">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="macademy_minerva_faq_fieldset">
+        <settings>
+            <label/>
+        </settings>
+        <field name="entity_id" formElement="hidden"/>
+        <field name="customer_id" formElement="hidden"/>
+        <field name="name" formElement="hidden"/>
+        <field name="comment" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="rows" xsi:type="number">7</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Comment</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="is_published" formElement="select">
+            <settings>
+                <label translate="true">Published</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+    </fieldset>
+</form>

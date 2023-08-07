@@ -4,6 +4,11 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <update handle="customer_account"/>
     <body>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="title" xsi:type="string">Add new comments</argument>
+            </action>
+        </referenceBlock>
         <referenceContainer name="main">
             <block class="Pointeger\Core\Block\AddComment" name="core.comment.form"
                    template="Pointeger_Core::core/form.phtml"/>

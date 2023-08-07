@@ -4,6 +4,9 @@ declare(strict_types=1);
 namespace Pointeger\Core\Controller\Demo;
 
 use Magento\Framework\App\Action\HttpGetActionInterface;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 
 class Index implements HttpGetActionInterface
@@ -14,10 +17,12 @@ class Index implements HttpGetActionInterface
     public function __construct
     (
         private PageFactory $pageFactory
-    ) {}
+    )
+    {
+    }
 
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
+     * @return ResponseInterface|ResultInterface|Page
      */
     public function execute()
     {
