@@ -19,7 +19,7 @@
     }}">
 
     <!-- ko foreach: getRegion('summary') -->
-        <!-- ko template: getTemplate() --><!-- /ko -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
     <!--/ko-->
 
     <div class="opc-block-shipping-information">
@@ -27,7 +27,7 @@
         <!-- ko template: getTemplate() --><!-- /ko -->
         <!--/ko-->
     </div>
-    <div class="opc-block-shipping-information">
-        <div> this is not good</div>
+    <div class="opc-block-shipping-information" data-bind="scope: requestChild('shippingTime')">
+        <!-- ko template: getTemplate() --><!-- /ko -->
     </div>
 </div>
