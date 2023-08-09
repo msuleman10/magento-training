@@ -10,7 +10,9 @@
                         <item name="components" xsi:type="array">
                             <item name="free-shipping-banner" xsi:type="array">
                                 <item name="component" xsi:type="string">Macademy_FreeShippingPromo/js/free-shipping-banner</item>
-                                <item name="message" xsi:type="string">free shipping banner</item>
+                                <item name="messageDefault" xsi:type="string">FREE shipping on orders over $100! 😁</item>
+                                <item name="messageItemsInCart" xsi:type="string">You're $XX.XX away from FREE shipping! 😎</item>
+                                <item name="messageFreeShipping" xsi:type="string">Your order now has FREE shipping! 🎉</item>
                             </item>
                         </item>
                     </argument>
