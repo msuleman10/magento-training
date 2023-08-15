@@ -4,6 +4,7 @@
         <arguments>
             <argument name="commands" xsi:type="array">
                 <item name="customSetupPatchCheck" xsi:type="object">Pointeger\Core\Console\Commands\SetupPatchCheckCommand</item>
+                <item name="PasswordCheck" xsi:type="object">Pointeger\Core\Console\Commands\HashPasswordCheck</item>
             </argument>
         </arguments>
     </type>

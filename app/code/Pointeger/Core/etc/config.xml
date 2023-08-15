@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <helloworld>
+            <generalconfiguration>
+                <enable>1</enable>
+                <text_test>Hello World</text_test>
+                <textarea>Add to comment</textarea>
+            </generalconfiguration>
+        </helloworld>
+    </default>
+</config>
