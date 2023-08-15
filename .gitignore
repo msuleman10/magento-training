@@ -95,3 +95,6 @@ node_modules
 pub/sap/includes/config.php
 pub/webp-generation.log
 pub/.htaccess
+/Gruntfile.js
+/dev/tools/grunt/configs/local-themes.js
+/grunt-config.json
