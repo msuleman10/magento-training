@@ -1,0 +1,8 @@
+<div class="sku-lookup">
+    <h2>Sku Lookup</h2>
+    <form data-bind="submit: submitHandler">
+        <input name="sku" type="text" data-bind="textInput: sku, attr: {placeholder}"/>
+        <button type="submit">Sku Add</button>
+    </form>
+    <div data-bind="html: massageResponse"></div>
+</div>
