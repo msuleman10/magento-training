@@ -9,7 +9,16 @@ define([
 
     return Component.extend({
         defaults: {
-            boxConfiguration: ko.observableArray(['abcd', 1234, 'i18n'])
+            boxConfiguration: ko.observableArray([
+                {
+                    firstName: "Mark",
+                    lastName: "Shost"
+                },
+                {
+                    firstName: "jhon",
+                    lastName: "Sina"
+                }
+            ])
         },
         initialize() {
             this._super();
