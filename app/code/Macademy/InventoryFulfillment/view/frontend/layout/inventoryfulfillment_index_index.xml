@@ -7,8 +7,16 @@
                 <arguments>
                     <argument name="jsLayout" xsi:type="array">
                         <item name="components" xsi:type="array">
+                        <!--first ui component-->
                             <item name="skuLookup" xsi:type="array">
                                 <item name="component" xsi:type="string">Macademy_InventoryFulfillment/js/sku-lookup</item>
+                            </item>
+                        <!--second ui component its template is assign in item node not 'js' file-->
+                            <item name="boxConfiguration" xsi:type="array">
+                                <item name="component" xsi:type="string">Macademy_InventoryFulfillment/js/box-configuration</item>
+                                <item name="config" xsi:type="array">
+                                    <item name="template" xsi:type="string">Macademy_InventoryFulfillment/box-configuration</item>
+                                </item>
                             </item>
                         </item>
                     </argument>
