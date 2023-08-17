@@ -2,7 +2,7 @@
     <h2 data-bind="i18n: 'Sku Lookup'"></h2>
     <form data-bind="submit: submitHandler">
         <input name="sku" type="text" data-bind="textInput: sku, attr: {placeholder}"/>
-        <button type="submit"><!-- ko i18n: 'Sku Submit' --><!--/ko--></button>
+        <button class="action primary" type="submit"><!-- ko i18n: 'Sku Submit' --><!--/ko--></button>
     </form>
     <div data-bind="html: massageResponse , style: {color: isSuccess() ? 'green' : 'red'}"></div>
 </div>

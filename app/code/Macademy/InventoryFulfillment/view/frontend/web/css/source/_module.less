@@ -1,0 +1,41 @@
+& when (@media-common = true) {
+  .sku-lookup {
+    form {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    input {
+      max-width: 20%;
+    }
+  }
+
+  .box-configuration {
+    .delete{
+      display: block;
+      padding-top: 5px;
+      cursor: pointer;
+      color: @color-red12;
+    }
+    form {
+      padding: 10px 40px;
+
+      tbody {
+        tr:last-child {
+          td {
+            vertical-align: unset;
+          }
+        }
+      }
+
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 10px;
+      }
+    }
+  }
+}

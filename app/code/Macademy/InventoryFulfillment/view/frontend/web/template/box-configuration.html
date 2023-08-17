@@ -1,10 +1,43 @@
 <div class="box-configuration">
     <h2 data-bind="i18n: 'Box Configuration'"></h2>
-    <!-- ko foreach: {data: boxConfiguration ,as: 'boxConfig'} -->
-    <div>
-        <!-- ko i18n: 'Configuration' --><!-- /ko -->
-        <!-- ko text: $index() * 2 --><!-- /ko -->:
-        <!-- ko text: ko.toJSON(boxConfig) --><!-- /ko -->
-    </div>
-    <!-- /ko -->
+    <form data-bind="submit: handleSubmit">
+        <table>
+            <thead>
+                <tr>
+                    <th data-bind="i18n: 'FirstName'"></th>
+                    <th data-bind="i18n: 'LastName'"></th>
+                    <th data-bind="i18n: 'UserName'"></th>
+                    <th data-bind="i18n: 'Email'"></th>
+                    <th data-bind="i18n: 'Password'"></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: boxConfiguration">
+            <tr>
+                <td>
+                    <input name="first-name" type="text" data-bind="textInput: firstName"/>
+                </td>
+                <td>
+                    <input name="last-name" type="text" data-bind="textInput: lastName"/>
+                </td>
+                <td>
+                    <input name="user-name" type="text" data-bind="textInput: userName"/>
+                </td>
+                <td>
+                    <input name="email" type="email" data-bind="textInput: email"/>
+                </td>
+                <td>
+                    <input name="password" type="text" data-bind="textInput: password"/>
+                </td>
+                <td>
+                    <a class="action delete" data-bind="click: $parent.handleDelete.bind($parent,$index()), i18n: 'Delete'"></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div>
+            <button class="action" data-bind="click: handleAdd, i18n: 'Add box configuration'"></button>
+            <button class="action primary" type="submit" data-bind="i18n: 'Submit'"></button>
+        </div>
+    </form>
 </div>
