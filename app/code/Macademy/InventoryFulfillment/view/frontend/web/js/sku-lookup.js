@@ -3,21 +3,23 @@ define([
     'ko',
     'mage/storage',
     'jquery',
+    'Macademy_InventoryFulfillment/js/model/sku'
 ], function (
     Component,
     ko,
     storage,
     $,
+    skuModel
 ) {
     'use strict';
 
     return Component.extend({
         defaults: {
             template: "Macademy_InventoryFulfillment/sku-lookup",
-            sku: ko.observable("24-MB01"),
+            sku: skuModel.sku,
             placeholder: "Example: 24-MB01",
             massageResponse: ko.observable(''),
-            isSuccess: ko.observable(false)
+            isSuccess: skuModel.isSuccess
         },
         initialize() {
             this._super();

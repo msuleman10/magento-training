@@ -1,36 +1,36 @@
-<div class="box-configuration">
-    <h2 data-bind="i18n: 'Box Configuration'"></h2>
+<div class="box-configurations">
+    <h2 data-bind="i18n: 'Box Configurations'"></h2>
     <form data-bind="submit: handleSubmit">
         <table>
             <thead>
-                <tr>
-                    <th data-bind="i18n: 'FirstName'"></th>
-                    <th data-bind="i18n: 'LastName'"></th>
-                    <th data-bind="i18n: 'UserName'"></th>
-                    <th data-bind="i18n: 'Email'"></th>
-                    <th data-bind="i18n: 'Password'"></th>
-                    <th></th>
-                </tr>
+            <tr>
+                <th data-bind="i18n: 'Units per box'"></th>
+                <th data-bind="i18n: 'Number of boxes'"></th>
+                <th data-bind="i18n: 'Box weight (lb.)'"></th>
+                <th data-bind="i18n: 'Box dimensions (in.)'"></th>
+                <th></th>
+            </tr>
             </thead>
-            <tbody data-bind="foreach: boxConfiguration">
+            <tbody data-bind="foreach: boxConfigurationsModel.boxConfigurations">
             <tr>
                 <td>
-                    <input name="first-name" type="text" data-bind="textInput: firstName"/>
+                    <input type="number" class="required-entry validate-greater-than-zero" data-bind="textInput: unitsPerBox, attr: { name: 'units_per_box_' + $index() }" />
                 </td>
                 <td>
-                    <input name="last-name" type="text" data-bind="textInput: lastName"/>
+                    <input type="number" class="required-entry validate-greater-than-zero" data-bind="textInput: numberOfBoxes, attr: { name: 'number_of_boxes_' + $index() }"/>
                 </td>
                 <td>
-                    <input name="user-name" type="text" data-bind="textInput: userName"/>
+                    <input type="number" class="required-entry validate-greater-than-zero" data-bind="textInput: weight, attr: { name: 'weight_' + $index() }"/>
                 </td>
                 <td>
-                    <input name="email" type="email" data-bind="textInput: email"/>
+                    <input type="number" class="required-entry validate-greater-than-zero" data-bind="textInput: length, attr: { name: 'length_' + $index() }"/>
+                    x
+                    <input type="number" class="required-entry validate-greater-than-zero" data-bind="textInput: width, attr: { name: 'width_' + $index() }"/>
+                    x
+                    <input type="number" class="required-entry validate-greater-than-zero" data-bind="textInput: height, attr: { name: 'height_' + $index() }"/>
                 </td>
                 <td>
-                    <input name="password" type="text" data-bind="textInput: password"/>
-                </td>
-                <td>
-                    <a class="action delete" data-bind="click: $parent.handleDelete.bind($parent,$index()), i18n: 'Delete'"></a>
+                    <a class="action delete" data-bind="click: $parent.handleDelete.bind($parent, $index())"><!-- ko i18n: 'Delete' --><!-- /ko --></a>
                 </td>
             </tr>
             </tbody>

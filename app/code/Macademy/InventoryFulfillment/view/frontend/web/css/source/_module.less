@@ -12,22 +12,19 @@
     }
   }
 
-  .box-configuration {
-    .delete{
+  .box-configurations {
+    .delete {
       display: block;
       padding-top: 5px;
       cursor: pointer;
       color: @color-red12;
     }
+
     form {
       padding: 10px 40px;
 
-      tbody {
-        tr:last-child {
-          td {
-            vertical-align: unset;
-          }
-        }
+      input {
+        width: 90px;
       }
 
       div {
@@ -35,6 +32,47 @@
         align-items: center;
         justify-content: space-between;
         padding: 20px 10px;
+      }
+
+      table {
+        margin-bottom: 28px;
+
+        tbody {
+          tr:last-child {
+            td {
+              vertical-align: unset;
+            }
+          }
+
+          td {
+            position: relative;
+          }
+
+          tr {
+            margin-bottom: 30px;
+          }
+        }
+      }
+
+
+      input[aria-invalid="true"] {
+        border: 1px solid @color-red12;
+      }
+
+      label.error {
+        position: absolute;
+        width: 100%;
+        display: block;
+        margin-top: 3px;
+        font-size: 1.2rem;
+        line-height: 1.2rem;
+        z-index: 99;
+        font-weight: 400;
+        color: @color-red12;
+      }
+
+      button.primary {
+        margin-left: 6px;
       }
     }
   }

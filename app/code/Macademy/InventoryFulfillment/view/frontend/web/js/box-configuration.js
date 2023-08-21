@@ -1,36 +1,44 @@
 define([
     'uiComponent',
-    'ko'
+    'ko',
+    'Macademy_InventoryFulfillment/js/model/box-configurations',
+    'Macademy_InventoryFulfillment/js/model/sku',
+    'jquery'
 ], function (
     Component,
-    ko
+    ko,
+    boxConfigurationModel,
+    sku,
+    $
 ) {
     'use strict';
-    const boxConfiguration = () => {
-        return {
-            firstName: ko.observable(),
-            lastName: ko.observable(),
-            userName: ko.observable(),
-            email: ko.observable(),
-            password: ko.observable(),
-        };
-    }
     return Component.extend({
         defaults: {
-            boxConfiguration: ko.observableArray([boxConfiguration()])
+            boxConfiguration: boxConfigurationModel.boxConfiguration
         },
         initialize() {
             this._super();
-            console.log("this is not good")
+            sku.isSuccess.subscribe((value) => {
+                console.log("New value is " + value)
+            });
+            sku.isSuccess.subscribe((value) => {
+                console.log("Old value is " + value)
+            }, null, 'beforeChange');
         },
         handleAdd() {
-            this.boxConfiguration.push(boxConfiguration());
+            boxConfigurationModel.add();
         },
         handleDelete(index) {
-            this.boxConfiguration.splice(index, 1)
+            boxConfigurationModel.delete(index)
         },
         handleSubmit() {
-            console.log("Submit new data");
+            $('.box-configurations form input').removeAttr('aria-invalid');
+
+            if ($('.box-configurations form').valid()) {
+                boxConfigurationModel.isSuccess(true);
+            } else {
+                boxConfigurationModel.isSuccess(false);
+            }
         }
     });
 });
