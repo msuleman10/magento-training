@@ -14,7 +14,8 @@ define([
     'use strict';
     return Component.extend({
         defaults: {
-            boxConfiguration: boxConfigurationModel.boxConfiguration
+            boxConfiguration: boxConfigurationModel.boxConfiguration,
+            skuModel:sku
         },
         initialize() {
             this._super();
